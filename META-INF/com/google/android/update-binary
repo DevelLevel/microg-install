@@ -1,0 +1,46 @@
+#!/sbin/sh
+# MicroG - Install, By DevelLevel
+# Inspired by AnyKernel3 and NanoDroid
+# Made to be simple and understandable
+
+# Unpack the zip and set variables
+ZIPFILE="$3";
+ZIPROOT="/dev/tmp/op6/";
+mkdir -p "${ZIPROOT}";
+cd "${ZIPROOT}";
+unzip -o "${ZIPFILE}";
+mount /dev/block/bootdevice/by-name/system /system;
+SYSTEM="/system/";
+
+# Installation
+cp -r "${ZIPROOT}"system/* "${SYSTEM}"system/;
+
+# Permissions
+# MicroG
+chmod 644 "${SYSTEM}"/priv-app/GmsCore/GmsCore.apk;
+chmod 744 "${SYSTEM}"/priv-app/GmsCore;
+chown 0.0 "${SYSTEM}"/priv-app/GmsCore/GmsCore.apk;
+chown 0.0 "${SYSTEM}"/priv-app/GmsCore;
+chmod 644 "${SYSTEM}"/etc/permissions/privapp-permissions-GmsCore.xml;
+# PlayStore, Extracted from OpenGapps
+chmod 644 "${SYSTEM}"/priv-app/Phonesky/Phonesky.apk;
+chmod 744 "${SYSTEM}"/priv-app/Phonesky;
+chown 0.0 "${SYSTEM}"/priv-app/Phonesky/Phonesky.apk;
+chown 0.0 "${SYSTEM}"/priv-app/Phonesky;
+chmod 644 "${SYSTEM}"/etc/permissions/privapp-permissions-Phonesky.xml;
+# DroidGuard
+chmod 644 "${SYSTEM}"/priv-app/DroidGuard/DroidGuard.apk;
+chmod 744 "${SYSTEM}"/priv-app/DroidGuard;
+chown 0.0 "${SYSTEM}"/priv-app/DroidGuard/DroidGuard.apk;
+chown 0.0 "${SYSTEM}"/priv-app/DroidGuard;
+chmod 644 "${SYSTEM}"/etc/permissions/privapp-permissions-DroidGuard.xml;
+# GSF
+chmod 644 "${SYSTEM}"/priv-app/GSF/GSF.apk;
+chmod 744 "${SYSTEM}"/priv-app/GSF;
+chown 0.0 "${SYSTEM}"/priv-app/GSF/GSF.apk;
+chown 0.0 "${SYSTEM}"/priv-app/GSF;
+chmod 644 "${SYSTEM}"/etc/permissions/privapp-permissions-GSF.xml;
+
+# Exit installation
+umount /system;
+rm -rf "${ZIPROOT}";

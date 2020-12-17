@@ -1,0 +1,5 @@
+<permissions>
+    <privapp-permissions package="org.microg.gms.droidguard">
+        <permission name="android.permission.INTERNET"/>
+    </privapp-permissions>
+</permissions>
