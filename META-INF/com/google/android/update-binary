@@ -5,7 +5,7 @@
 
 # Unpack the zip and set variables
 ZIPFILE="$3";
-ZIPROOT="/dev/tmp/op6/";
+ZIPROOT="/dev/tmp/mgi/";
 mkdir -p "${ZIPROOT}";
 cd "${ZIPROOT}";
 unzip -o "${ZIPFILE}";
